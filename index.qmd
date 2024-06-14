@@ -1,0 +1,120 @@
+---
+title: "From `code` to _clarity_: Using Quarto for Python documentation"
+author: Isabel Zimmerman
+format: 
+    revealjs:
+        theme: [default, style.scss]
+        footer: isabelizimm.me/talk-scipy-quarto-docs
+        slide-number: c/t
+---
+
+## Who am I?
+
+
+::: columns
+<center>
+
+<img src="https://github.com/isabelizimm.png" style="border-radius: 50%;" width="300px"/>
+
+[{{< fa brands github >}} \@isabelizimm](https://github.com/isabelizimm)
+
+[{{< fa brands linkedin >}} \@isabel-zimmerman](https://www.linkedin.com/in/isabel-zimmerman/)
+
+[{{< fa link >}} isabelizimm.me](https://isabelizimm.me/)
+
+</center>
+
+:::
+
+
+## Who are you?
+
+- A tool builder 🛠️
+- A scientist 🧪
+
+. . . 
+
+- Someone who communicates about Python code 💻
+
+# What is Quarto anyway?
+
+::: r-fit-text
+_an open-source scientific and technical publishing system_
+:::
+
+# A way to make
+
+::: {.incremental}	
+- Presentations
+- Dashboards
+- Books
+- Websites
+:::
+
+
+## examples
+
+- screenshots of quarto, nbdev, ibis
+
+# Why did I choose Quarto?
+   
+## personal blog with Quarto 
+
+- instant gratification
+- supported code as it was written
+
+::: notes
+- in less than 10 minutes. 
+- There is multilingual support for Python, R, Julia, and ObservableJS. In my Quarto blog, I can write content in Jupyter Notebooks, RMarkdown files, or regular Markdown with no add ons or special commands.
+- There are options to run my blogs on render– no more worrying if my blog posts have deprecated!
+- Demonstrate how to make a personal website in just a few lines of code.
+:::
+
+## How quickly can I make a blog?
+
+```
+quarto create project blog .
+```
+
+screenshot of simple site
+
+## How quickly can I make a blog?
+
+screenshot of file structure
+
+::: notes
+this was a great experience for me!
+
+where else could i use quarto?
+:::
+
+# transferrable skills
+
+::: notes
+work on a package that has another flavor in R
+:::
+
+## pip install `quartodoc`
+
+- You can use Quarto for scientific Python package documentation
+- It is possible to build Python documentation with the package `quartodoc`, which generates API documentation automatically within a Quarto website.
+- Demonstrate `quartodoc` usage with a simple package.
+
+# not just for simple stuff
+
+## web assembly
+
+::: notes
+- Web Assembly is magical. Giving users the ability to interact with your code without installing anything is a superpower! We will go through examples of Python package documentation built with Quarto that showcases Web Assembly examples.
+:::
+
+## customization
+
+## Want more Quarto?
+
+- [Quarto documentation](https://quarto.org)
+- [`quartodoc` Python package](https://machow.github.io/quartodoc/get-started/overview.html)
+
+_cheers,_
+
+_isabel_
