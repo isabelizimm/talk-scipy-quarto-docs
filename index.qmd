@@ -1,11 +1,13 @@
 ---
 title: "From `code` to _clarity_: Using Quarto for Python documentation"
-author: Isabel Zimmerman
+author: Isabel Zimmerman, Posit PBC
 format: 
     revealjs:
         theme: [default, style.scss]
         footer: isabelizimm.me/talk-scipy-quarto-docs
         slide-number: c/t
+revealjs-plugins:
+  - codewindow
 ---
 
 ## Who am I?
@@ -31,10 +33,95 @@ format:
 
 - A tool builder 🛠️
 - A scientist 🧪
+- An engineer 👷
 
-. . . 
+. . .
 
-- Someone who communicates about Python code 💻
+Someone who communicates about (or with) Python code 💻
+
+::: notes
+people who publish papers, learn new things, create novel content, it gets
+:::
+
+#
+
+::: r-fit-text
+_you should really make a personal website!_
+:::
+
+::: notes
+right now it feels like the personal website is the new age business card.
+
+everyone should have a blog!!!
+:::
+
+## My personal blog experience 
+
+- instant gratification
+- low maintenance
+- support the files I already had made
+- functionally aesthetically pleasing
+
+::: notes
+i wanted to be able to create a blog FAST. 
+
+low maintenance
+
+- micro maintenance: easy to remember how to use qmds, even if i don't touch it for months
+- macro maintenance: easy to navigate my blog, even if i don't touch it for months
+
+quarto markdown files (qmd), but also regular markdown or jupyter notebooks
+
+never concerned about if the code in my blog posts still run, since it will run on creation!
+:::
+
+## My personal blog experience 
+
+::: {.codewindow}
+
+```
+quarto create project blog .
+```
+
+:::
+
+::: notes
+and with that, you have a blog that will build and render
+:::
+
+## {background-image="./images/izblog.jpeg"}
+
+## {background-image="./images/izblog2.jpeg"}
+
+::: notes
+
+obsessed with quarto. the startup experience was just so _delightful_. it almost became a game.
+
+once in grad school, 5 minutes before class started, i was on my typical "everyone should have a personal website" soapbox and my friend said "okay well then help me make one". she definitely meant like...after class or at our study group, but with 5 minutes until the lecture began, she had a running website with a minute to spare.
+:::
+
+## My personal blog experience 
+
+::: incremental
+- instant gratification ✔️
+- low maintenance ✔️
+- support the files I already had made ✔️
+- functionally aesthetically pleasing ✔️
+:::
+
+::: notes
+i wanted to be able to create a blog FAST. 
+
+low maintenance
+
+- micro maintenance: easy to remember how to use qmds, even if i don't touch it for months
+- macro maintenance: easy to navigate my blog, even if i don't touch it for months
+
+quarto markdown files (qmd), but also regular markdown or jupyter notebooks
+
+never concerned about if the code in my blog posts still run, since it will run on creation!
+:::
+
 
 # What is Quarto anyway?
 
@@ -42,7 +129,7 @@ format:
 _an open-source scientific and technical publishing system_
 :::
 
-# A way to make
+# What is Quarto anyway?
 
 ::: {.incremental}	
 - Presentations
@@ -51,64 +138,164 @@ _an open-source scientific and technical publishing system_
 - Websites
 :::
 
-
-## examples
-
-- screenshots of quarto, nbdev, ibis
-
-# Why did I choose Quarto?
-   
-## personal blog with Quarto 
-
-- instant gratification
-- supported code as it was written
-
 ::: notes
-- in less than 10 minutes. 
-- There is multilingual support for Python, R, Julia, and ObservableJS. In my Quarto blog, I can write content in Jupyter Notebooks, RMarkdown files, or regular Markdown with no add ons or special commands.
-- There are options to run my blogs on render– no more worrying if my blog posts have deprecated!
-- Demonstrate how to make a personal website in just a few lines of code.
+for me, started in a very specific way
 :::
 
-## How quickly can I make a blog?
 
+## How quickly can I make a blog? {auto-animate="true"}
+
+question: should this be here? (go into structure OR go into _quarto.yml OR neither)
+
+::: {.codewindow}
+
+```{.yaml code-line-numbers="11"}
+my_blog/
+├─ posts/
+│  ├─ post-with-code/
+│     ├─ image.jpg
+│     ├─ index.qmd
+├─ .gitignore
+├─ styles.css
+├─ profile.jpg
+├─ index.qmd
+├─ about.qmd
+├─ _quarto.yml
 ```
-quarto create project blog .
-```
 
-screenshot of simple site
-
-## How quickly can I make a blog?
-
-screenshot of file structure
-
-::: notes
-this was a great experience for me!
-
-where else could i use quarto?
 :::
 
-# transferrable skills
+# What else can I use this for?
 
 ::: notes
 work on a package that has another flavor in R
 :::
 
-## pip install `quartodoc`
+## The `vetiver` problem
+
+::: r-fit-text
+The vetiver framework for MLOps tasks is built for data science teams using R and/or Python, with a native, fluent experience for both.
+:::
+
+::: notes
+now, in this talk, i'm not going to tell you about the problems vetiver solves for YOU.
+
+... i'm going to tell you about the problems vetiver created for ME
+:::
+
+## The `vetiver` problem
+
+::: r-fit-text
+The vetiver framework for MLOps tasks is built for data science teams using **R and/or Python**, with a native, fluent experience for both.
+:::
+
+::: notes
+i wanted a native, fluent experience writing doc sites in multiple languages!
+
+and now i've become so accustomed to "run on creation", i want that sort of support 
+
+- instant gratification ✔️
+- low maintenance ✔️
+- support the files I already had made ✔️
+- functionally aesthetically pleasing ✔️
+:::
+
+## The `vetiver` problem
+
+::: {.codewindow}
+
+````
+```{.r}
+# r code here
+```
+
+```{.python}
+# python code here
+```
+````
+
+:::
+
+::: notes
+comes with the caveat that if there are both languages, you will have to use reticulate, but a few environment variables set, this is not too tricky to overcome
+
+i'm not passing variables between languages here (although that is something that is possible), i wanted two versions of the same workflow side-by-side.
+:::
+
+# {background-image="images/mlopswvetiver.jpeg"}
+
+## `pip install quartodoc`
 
 - You can use Quarto for scientific Python package documentation
 - It is possible to build Python documentation with the package `quartodoc`, which generates API documentation automatically within a Quarto website.
-- Demonstrate `quartodoc` usage with a simple package.
 
-# not just for simple stuff
+::: notes
 
-## web assembly
+:::
+
+## `pip install quartodoc`
+
+::: {.codewindow}
+
+```yaml
+project:
+  type: website
+
+# tell quarto to read the generated sidebar
+metadata-files:
+  - _sidebar.yml
+
+
+quartodoc:
+  # the name used to import the package you want to create reference docs for
+  package: quartodoc
+
+  # write sidebar data to this file
+  sidebar: _sidebar.yml
+
+  sections:
+    - title: Some functions
+      desc: Functions to inspect docstrings.
+      contents:
+        # the functions being documented in the package.
+        # you can refer to anything: class methods, modules, etc..
+        - get_object
+        - preview
+```
+
+:::
+
+## `pip install quartodoc`
+
+::: {.codewindow}
+
+```yaml
+quartodoc build
+quarto preview
+```
+
+:::
+
+# {background-image="images/vetiver_qd.jpeg"}
+
+# {background-image="images/vetiver_qd_vapi.jpeg"}
+
+# Not just for the simple stuff
+
+## Highly customizable
+
+# {background-image="images/plotnine.jpeg"}
+
+
+## Web Assembly
 
 ::: notes
 - Web Assembly is magical. Giving users the ability to interact with your code without installing anything is a superpower! We will go through examples of Python package documentation built with Quarto that showcases Web Assembly examples.
 :::
 
-## customization
+# {background-image="images/shinycheckbox.gif"}
+
+## Magic of Quarto
 
 ## Want more Quarto?
 

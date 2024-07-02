@@ -10,7 +10,7 @@
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="index_files/libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="index_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.449">
+  <meta name="generator" content="quarto-1.5.47">
 
   <meta name="author" content="Isabel Zimmerman">
   <title>From code to clarity: Using Quarto for Python documentation</title>
@@ -31,11 +31,77 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-codewindow/codewindow.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -350,13 +416,145 @@ Isabel Zimmerman
 <ul>
 <li>A tool builder 🛠️</li>
 <li>A scientist 🧪</li>
+<li>An engineer 👷</li>
 </ul>
 <div class="fragment">
-<ul>
-<li>Someone who communicates about Python code 💻</li>
-</ul>
+<p>Someone who communicates about (or with) Python code 💻</p>
+<aside class="notes">
+<p>people who publish papers, learn new things, create novel content, it gets</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
 </section>
+<section>
+<section id="section" class="title-slide slide level1 center">
+<h1></h1>
+<div class="r-fit-text">
+<p><em>you should really make a personal website!</em></p>
+</div>
+<aside class="notes">
+<p>right now it feels like the personal website is the new age business card.</p>
+<p>everyone should have a blog!!!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="my-personal-blog-experience" class="slide level2">
+<h2>My personal blog experience</h2>
+<ul>
+<li>instant gratification</li>
+<li>low maintenance</li>
+<li>support the files I already had made</li>
+<li>functionally aesthetically pleasing</li>
+</ul>
+<aside class="notes">
+<p>i wanted to be able to create a blog FAST.</p>
+<p>low maintenance</p>
+<ul>
+<li>micro maintenance: easy to remember how to use qmds, even if i don’t touch it for months</li>
+<li>macro maintenance: easy to navigate my blog, even if i don’t touch it for months</li>
+</ul>
+<p>quarto markdown files (qmd), but also regular markdown or jupyter notebooks</p>
+<p>never concerned about if the code in my blog posts still run, since it will run on creation!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="my-personal-blog-experience-1" class="slide level2">
+<h2>My personal blog experience</h2>
+<div class="codewindow">
+<pre><code>quarto create project blog .</code></pre>
+</div>
+<aside class="notes">
+<p>and with that, you have a blog that will build and render</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-1" class="slide level2" data-background-image="./images/izblog.jpeg">
+<h2></h2>
+</section>
+<section id="section-2" class="slide level2" data-background-image="./images/izblog2.jpeg">
+<h2></h2>
+<aside class="notes">
+<p>obsessed with quarto. the startup experience was just so <em>delightful</em>. it almost became a game.</p>
+<p>once in grad school, 5 minutes before class started, i was on my typical “everyone should have a personal website” soapbox and my friend said “okay well then help me make one”. she definitely meant like…after class or at our study group, but with 5 minutes until the lecture began, she had a running website with a minute to spare.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="my-personal-blog-experience-2" class="slide level2">
+<h2>My personal blog experience</h2>
+<div>
+<ul>
+<li class="fragment">instant gratification ✔️</li>
+<li class="fragment">low maintenance ✔️</li>
+<li class="fragment">support the files I already had made ✔️</li>
+<li class="fragment">functionally aesthetically pleasing ✔️</li>
+</ul>
+</div>
+<aside class="notes">
+<p>i wanted to be able to create a blog FAST.</p>
+<p>low maintenance</p>
+<ul>
+<li>micro maintenance: easy to remember how to use qmds, even if i don’t touch it for months</li>
+<li>macro maintenance: easy to navigate my blog, even if i don’t touch it for months</li>
+</ul>
+<p>quarto markdown files (qmd), but also regular markdown or jupyter notebooks</p>
+<p>never concerned about if the code in my blog posts still run, since it will run on creation!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
 <section id="what-is-quarto-anyway" class="title-slide slide level1 center">
 <h1>What is Quarto anyway?</h1>
 <div class="r-fit-text">
@@ -365,8 +563,8 @@ Isabel Zimmerman
 </section>
 
 <section>
-<section id="a-way-to-make" class="title-slide slide level1 center">
-<h1>A way to make</h1>
+<section id="what-is-quarto-anyway-1" class="title-slide slide level1 center">
+<h1>What is Quarto anyway?</h1>
 <div>
 <ul>
 <li class="fragment">Presentations</li>
@@ -375,30 +573,87 @@ Isabel Zimmerman
 <li class="fragment">Websites</li>
 </ul>
 </div>
+<aside class="notes">
+<p>for me, started in a very specific way</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="examples" class="slide level2">
-<h2>examples</h2>
-<ul>
-<li>screenshots of quarto, nbdev, ibis</li>
-</ul>
+<section id="how-quickly-can-i-make-a-blog" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">How quickly can I make a blog?</h2>
+<p>question: should this be here? (go into structure OR go into _quarto.yml OR neither)</p>
+<div class="codewindow">
+<div class="sourceCode" id="cb2" data-code-line-numbers="11"><pre class="sourceCode numberSource yaml number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode yaml hljs"><span id="cb2-1" class="hljs-ln-code"><a href=""></a><span class="at">my_blog/</span></span>
+<span id="cb2-2" class="hljs-ln-code"><a href=""></a><span class="at">├─ posts/</span></span>
+<span id="cb2-3" class="hljs-ln-code"><a href=""></a><span class="at">│  ├─ post-with-code/</span></span>
+<span id="cb2-4" class="hljs-ln-code"><a href=""></a><span class="at">│     ├─ image.jpg</span></span>
+<span id="cb2-5" class="hljs-ln-code"><a href=""></a><span class="at">│     ├─ index.qmd</span></span>
+<span id="cb2-6" class="hljs-ln-code"><a href=""></a><span class="at">├─ .gitignore</span></span>
+<span id="cb2-7" class="hljs-ln-code"><a href=""></a><span class="at">├─ styles.css</span></span>
+<span id="cb2-8" class="hljs-ln-code"><a href=""></a><span class="at">├─ profile.jpg</span></span>
+<span id="cb2-9" class="hljs-ln-code"><a href=""></a><span class="at">├─ index.qmd</span></span>
+<span id="cb2-10" class="hljs-ln-code"><a href=""></a><span class="at">├─ about.qmd</span></span>
+<span id="cb2-11" class="hljs-ln-code"><a href=""></a><span class="at">├─ _quarto.yml</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section></section>
 <section>
-<section id="why-did-i-choose-quarto" class="title-slide slide level1 center">
-<h1>Why did I choose Quarto?</h1>
-
-</section>
-<section id="personal-blog-with-quarto" class="slide level2">
-<h2>personal blog with Quarto</h2>
-<ul>
-<li>instant gratification</li>
-<li>supported code as it was written</li>
-</ul>
+<section id="what-else-can-i-use-this-for" class="title-slide slide level1 center">
+<h1>What else can I use this for?</h1>
 <aside class="notes">
+<p>work on a package that has another flavor in R</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-vetiver-problem" class="slide level2">
+<h2>The <code>vetiver</code> problem</h2>
+<div class="r-fit-text">
+<p>The vetiver framework for MLOps tasks is built for data science teams using R and/or Python, with a native, fluent experience for both.</p>
+</div>
+<aside class="notes">
+<p>now, in this talk, i’m not going to tell you about the problems vetiver solves for YOU.</p>
+<p>… i’m going to tell you about the problems vetiver created for ME</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-vetiver-problem-1" class="slide level2">
+<h2>The <code>vetiver</code> problem</h2>
+<div class="r-fit-text">
+<p>The vetiver framework for MLOps tasks is built for data science teams using <strong>R and/or Python</strong>, with a native, fluent experience for both.</p>
+</div>
+<aside class="notes">
+<p>i wanted a native, fluent experience writing doc sites in multiple languages!</p>
+<p>and now i’ve become so accustomed to “run on creation”, i want that sort of support</p>
 <ul>
-<li>in less than 10 minutes.</li>
-<li>There is multilingual support for Python, R, Julia, and ObservableJS. In my Quarto blog, I can write content in Jupyter Notebooks, RMarkdown files, or regular Markdown with no add ons or special commands.</li>
-<li>There are options to run my blogs on render– no more worrying if my blog posts have deprecated!</li>
-<li>Demonstrate how to make a personal website in just a few lines of code.</li>
+<li>instant gratification ✔️</li>
+<li>low maintenance ✔️</li>
+<li>support the files I already had made ✔️</li>
+<li>functionally aesthetically pleasing ✔️</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -412,31 +667,117 @@ Isabel Zimmerman
           display:block!important;
       }</style></aside>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
-<pre><code>quarto create project blog isabelizimm_blog</code></pre>
-<p>screenshot of simple site</p>
+<section id="the-vetiver-problem-2" class="slide level2">
+<h2>The <code>vetiver</code> problem</h2>
+<div class="codewindow">
+<pre><code>```{.r}
+# r code here
+```
+
+```{.python}
+# python code here
+```</code></pre>
+</div>
+<aside class="notes">
+<p>comes with the caveat that if there are both languages, you will have to use reticulate, but a few environment variables set, this is not too tricky to overcome</p>
+<p>i’m not passing variables between languages here (although that is something that is possible), i wanted two versions of the same workflow side-by-side.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
-<section id="transferrable-skills" class="title-slide slide level1 center">
-<h1>transferrable skills</h1>
+<section id="section-3" class="title-slide slide level1 center" data-background-image="images/mlopswvetiver.jpeg">
+<h1></h1>
 
 </section>
 <section id="pip-install-quartodoc" class="slide level2">
-<h2>pip install <code>quartodoc</code></h2>
+<h2><code>pip install quartodoc</code></h2>
 <ul>
-<li>You can use Quarto for scientific Python package documentation. Specifically, I was working with packages that use R and Python; no tools were filling that gap for me.</li>
+<li>You can use Quarto for scientific Python package documentation</li>
 <li>It is possible to build Python documentation with the package <code>quartodoc</code>, which generates API documentation automatically within a Quarto website.</li>
-<li>Demonstrate <code>quartodoc</code> usage with a simple package.</li>
 </ul>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pip-install-quartodoc-1" class="slide level2">
+<h2><code>pip install quartodoc</code></h2>
+<div class="codewindow">
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href=""></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb4-2"><a href=""></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
+<span id="cb4-3"><a href=""></a></span>
+<span id="cb4-4"><a href=""></a><span class="co"># tell quarto to read the generated sidebar</span></span>
+<span id="cb4-5"><a href=""></a><span class="fu">metadata-files</span><span class="kw">:</span></span>
+<span id="cb4-6"><a href=""></a><span class="at">  </span><span class="kw">-</span><span class="at"> _sidebar.yml</span></span>
+<span id="cb4-7"><a href=""></a></span>
+<span id="cb4-8"><a href=""></a></span>
+<span id="cb4-9"><a href=""></a><span class="fu">quartodoc</span><span class="kw">:</span></span>
+<span id="cb4-10"><a href=""></a><span class="co">  # the name used to import the package you want to create reference docs for</span></span>
+<span id="cb4-11"><a href=""></a><span class="at">  </span><span class="fu">package</span><span class="kw">:</span><span class="at"> quartodoc</span></span>
+<span id="cb4-12"><a href=""></a></span>
+<span id="cb4-13"><a href=""></a><span class="co">  # write sidebar data to this file</span></span>
+<span id="cb4-14"><a href=""></a><span class="at">  </span><span class="fu">sidebar</span><span class="kw">:</span><span class="at"> _sidebar.yml</span></span>
+<span id="cb4-15"><a href=""></a></span>
+<span id="cb4-16"><a href=""></a><span class="at">  </span><span class="fu">sections</span><span class="kw">:</span></span>
+<span id="cb4-17"><a href=""></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">title</span><span class="kw">:</span><span class="at"> Some functions</span></span>
+<span id="cb4-18"><a href=""></a><span class="at">      </span><span class="fu">desc</span><span class="kw">:</span><span class="at"> Functions to inspect docstrings.</span></span>
+<span id="cb4-19"><a href=""></a><span class="at">      </span><span class="fu">contents</span><span class="kw">:</span></span>
+<span id="cb4-20"><a href=""></a><span class="co">        # the functions being documented in the package.</span></span>
+<span id="cb4-21"><a href=""></a><span class="co">        # you can refer to anything: class methods, modules, etc..</span></span>
+<span id="cb4-22"><a href=""></a><span class="at">        </span><span class="kw">-</span><span class="at"> get_object</span></span>
+<span id="cb4-23"><a href=""></a><span class="at">        </span><span class="kw">-</span><span class="at"> preview</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="pip-install-quartodoc-2" class="slide level2">
+<h2><code>pip install quartodoc</code></h2>
+<div class="codewindow">
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href=""></a><span class="at">quartodoc build</span></span>
+<span id="cb5-2"><a href=""></a><span class="at">quarto preview</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section id="section-4" class="title-slide slide level1 center" data-background-image="images/vetiver_qd.jpeg">
+<h1></h1>
+
+</section>
+
+<section id="section-5" class="title-slide slide level1 center" data-background-image="images/vetiver_qd_vapi.jpeg">
+<h1></h1>
+
+</section>
+
+<section>
+<section id="not-just-for-the-simple-stuff" class="title-slide slide level1 center">
+<h1>Not just for the simple stuff</h1>
+
+</section>
+<section id="highly-customizable" class="slide level2">
+<h2>Highly customizable</h2>
 </section></section>
 <section>
-<section id="not-just-for-simple-stuff" class="title-slide slide level1 center">
-<h1>not just for simple stuff</h1>
+<section id="section-6" class="title-slide slide level1 center" data-background-image="images/plotnine.jpeg">
+<h1></h1>
 
 </section>
 <section id="web-assembly" class="slide level2">
-<h2>web assembly</h2>
+<h2>Web Assembly</h2>
 <aside class="notes">
 <ul>
 <li>Web Assembly is magical. Giving users the ability to interact with your code without installing anything is a superpower! We will go through examples of Python package documentation built with Quarto that showcases Web Assembly examples.</li>
@@ -452,9 +793,14 @@ Isabel Zimmerman
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section></section>
+<section>
+<section id="section-7" class="title-slide slide level1 center" data-background-image="images/shinycheckbox.gif">
+<h1></h1>
+
 </section>
-<section id="customization" class="slide level2">
-<h2>customization</h2>
+<section id="magic-of-quarto" class="slide level2">
+<h2>Magic of Quarto</h2>
 </section>
 <section id="want-more-quarto" class="slide level2">
 <h2>Want more Quarto?</h2>
@@ -464,8 +810,10 @@ Isabel Zimmerman
 </ul>
 <p><em>cheers,</em></p>
 <p><em>isabel</em></p>
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>isabelizimm.me/talk-scipy-quarto-docs</p>
+</div>
 </div>
 </section></section>
     </div>
@@ -478,6 +826,7 @@ Isabel Zimmerman
   <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-codewindow/codewindow.js"></script>
   <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -669,7 +1018,7 @@ Isabel Zimmerman
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealCodewindow, QuartoSupport,
 
           RevealMath,
           RevealNotes,
@@ -710,18 +1059,7 @@ Isabel Zimmerman
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -753,7 +1091,47 @@ Isabel Zimmerman
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -790,7 +1168,11 @@ Isabel Zimmerman
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
